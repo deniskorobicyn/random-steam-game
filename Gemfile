@@ -26,7 +26,7 @@ gem 'steam-api'
 gem "interactor-rails", "~> 2.0"
 
 # -- Server
-gem 'unicorn'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug'
@@ -40,4 +40,6 @@ group :development do
   gem 'pry'
   gem 'spring'
 end
+
+ruby "2.3.0"
 
