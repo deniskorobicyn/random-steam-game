@@ -14,7 +14,15 @@ class User < ActiveRecord::Base
     user.password = Devise.friendly_token[0,20]
     user.steamid = auth.extra.raw_info.steamid
 
-    user.save
+    user.save!
     user
+  end
+
+  def email_required?
+      false
+  end
+
+  def email_changed?
+      false
   end
 end
