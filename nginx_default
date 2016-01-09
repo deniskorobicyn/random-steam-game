@@ -1,0 +1,39 @@
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server ipv6only=on;
+ 
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+ 
+        # Make site accessible from http://localhost/
+        server_name localhost;
+ 
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+                # Uncomment to enable naxsi on this location
+                # include /etc/nginx/naxsi.rules
+        }
+}
+ 
+server {
+        listen 80;
+        server_name random-steam-game.ruby.dev;
+ 
+        location ~ /robots\.txt$ {
+                root /usr/share/nginx/html;
+        }
+ 
+        location ~ (^/system/|\.ico$) {
+                root /home/vagrant/code/public;
+        }
+ 
+        location / {
+                proxy_set_header X-Real-IP  $remote_addr;
+                proxy_set_header X-Forwarded-For $remote_addr;
+                proxy_set_header Host $host;
+                proxy_pass http://localhost:3000;
+        }
+}
+

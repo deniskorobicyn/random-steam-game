@@ -1,0 +1,12 @@
+div.container
+  - if current_user
+    .row
+      button.regenerate Regenerate
+    .row
+      p = image_tag @service.img, class: "image img-rounded"
+    .row
+      h3.game = @service.game
+  - else
+    .row.welcome-row
+      h5.welcome = I18n.t('views.home.welcome')
+      p.about = I18n.t('views.home.about')
