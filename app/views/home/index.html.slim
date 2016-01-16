@@ -1,12 +1,20 @@
-div.container
-  - if current_user
-    .row
-      button.regenerate Regenerate
-    .row
-      p = image_tag @service.img, class: "image img-rounded"
-    .row
-      h3.game = @service.game
-  - else
-    .row.welcome-row
-      h5.welcome = I18n.t('views.home.welcome')
-      p.about = I18n.t('views.home.about')
+.container
+  .text-center
+    .column.left-column
+      .text-center
+        a.btn.btn-primary.js-regenerate[data-action-url = api_random_games_url] = I18n.t('views.home.regenerate_all')
+    .column.right-column
+      h1.game = I18n.t('views.home.random_game_title')
+      p = image_tag @service.img, class: "image img-rounded js-game-image"
+      h3.js-game-name.game = @service.game
+  .text-center.js-achievement-block hidden = @service.achievement.blank?
+    .column.left-column
+      .text-center
+        a.btn.btn-primary.js-new-achievement data-action-url = api_random_achievements_url data-appid = @service.appid
+          = I18n.t('views.home.regenerate_achievement')
+    .column.right-column
+      h1.achievement = I18n.t('views.home.random_achievement_title')
+      h3.js-achievement-title.achievement = @service.achievement['displayName']
+      p = image_tag @service.achievement['icon'], class: 'image img-rounded js-achievement-icon' 
+      p.js-achievement-description.ach-descr = @service.achievement['description']
+    

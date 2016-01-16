@@ -2,6 +2,14 @@ class RandomGame
   include Interactor
 
   def call
+    game = select_game
+
+    context.game = game[:name]
+    context.img = game[:img]
+    context.appid = game[:appid]
+  end
+
+  def select_game
     games = Steam::Player.owned_games(
       context.user.steamid,
       params: {
@@ -9,14 +17,13 @@ class RandomGame
         include_played_free_games: '1'
       }
     )
-    result = games["games"].map do |game|
+
+    games["games"].map do |game|
       {
         name: game["name"],
-        img: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_logo_url"]}.jpg"
+        img: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_logo_url"]}.jpg",
+        appid: game["appid"]
       }
     end.sample
-
-    context.game = result[:name]
-    context.img = result[:img]
   end
 end

@@ -17,6 +17,10 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.before(:each) do
+    allow(Steam::Player).to receive(:owned_games).and_return(JSON.parse(File.read "#{Rails.root}/spec/fixtures/games.json"))
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

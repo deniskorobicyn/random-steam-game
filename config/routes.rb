@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   namespace :api, defaults: {format: :json} do
-    resources :random_game, only: :index
+    namespace :random do
+      resources :games, only: :index
+      resources :achievements, only: :index
+    end
   end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  root 'home#index'
+  authenticated :user do
+    root 'home#index'
+  end
+
+  unauthenticated do
+    root 'welcome#index', as: :unauthenticated_root
+  end
 end

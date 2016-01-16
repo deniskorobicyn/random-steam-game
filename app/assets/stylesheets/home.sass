@@ -20,16 +20,33 @@
   margin: 0px auto
   padding: 0px
 
-.image
+.center-block
   margin-left: auto
   margin-right: auto
+
+.vcenter
+  float: none
+  display: inline-block
+  vertical-align: middle
+
+.column
+  display: inline-block
+  vertical-align: middle
+
+.left-column
+  width: 200px
+
+.right-column
+  width: 400px
+
+.image
+  @extend .center-block
   margin-top: 20px
   margin-bottom: 20px
   display: block
 
-.game
-  margin-left: auto
-  margin-right: auto
+.game, .achievement, .ach-descr
+  @extend .center-block
   text-align: center
 
 .welcome-row
