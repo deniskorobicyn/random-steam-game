@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # -- Framework
 gem 'rails', '4.2.5'
 
+# -- Serialization
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+
 # -- Authentificcation
 gem 'devise'
 gem 'omniauth-steam'
@@ -40,7 +43,7 @@ end
 
 group :development do
   gem 'web-console', '~> 2.0'
-  gem 'pry'
+  gem 'pry-rails'
   gem 'spring'
 end
 

@@ -3,3 +3,7 @@ en:
     home:
       welcome: "Welcome to Random Steam Game!"
       about: "This service will allow you to choose next game to play from your steam library. Tiered from choosing next game? Or just don't want anyting and but want to play? Random Steam Game will help you! Just sign in with steam with right top button and we'll choose game for you."
+      random_game_title: Game
+      random_achievement_title: Achievement
+      regenerate_all: Regenerate
+      regenerate_achievement: Regenerate achievement

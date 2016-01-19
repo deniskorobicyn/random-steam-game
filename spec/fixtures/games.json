@@ -1,0 +1,13 @@
+{
+  "game_count": 1,
+  "games": [
+    {
+      "appid": 320,
+      "name": "Half-Life 2: Deathmatch",
+      "playtime_forever": 0,
+      "img_icon_url": "795e85364189511f4990861b578084deef086cb1",
+      "img_logo_url": "6dd9f66771300f2252d411e50739a1ceae9e5b30",
+      "has_community_visible_stats": true
+    }
+  ]
+}
