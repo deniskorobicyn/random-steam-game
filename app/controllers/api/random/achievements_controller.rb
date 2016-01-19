@@ -3,7 +3,6 @@ class Api::Random::AchievementsController < ApplicationController
 
   def index
     service = ::RandomAchievement.call(appid: params[:appid], user: current_user)
-    pp service
     render json: { achievement: service.achievement }
   end
 end
