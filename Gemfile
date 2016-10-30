@@ -1,32 +1,32 @@
 source 'https://rubygems.org'
 
 # -- Framework
-gem 'rails', '4.2.5'
+gem 'rails', '= 5.0.0.1'
 
 # -- Serialization
-gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+gem 'active_model_serializers', '~> 0.10.0'
 
 # -- Authentificcation
-gem 'devise'
-gem 'omniauth-steam'
+gem 'devise', '~> 4.2.0'
+gem 'omniauth-steam', '~> 1.0.3'
 
 # -- Environment
-gem 'figaro'
+gem 'figaro', '~> 1.1.1'
 
 # -- Database
-gem 'pg', '~> 0.15'
+gem 'pg', '~> 0.19'
 
 # -- Frontend
-gem 'slim-rails'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem 'bootstrap-sass' 
+gem 'slim-rails', '~> 3.1.1'
+gem 'sass-rails', '~> 5.0.6'
+gem 'uglifier', '~> 3.0.3'
+gem 'coffee-rails', '~> 4.2.1'
+gem 'jquery-rails', '~> 4.2.1'
+gem 'bootstrap-sass' , '~> 3.3.7'
 
 # -- Buisness Logic
-gem 'steam-api'
-gem "interactor-rails", "~> 2.0"
+gem 'steam-api', '~> 1.1.0'
+gem "interactor-rails", "~> 2.0.2"
 
 # -- Server
 group :production do
@@ -37,8 +37,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
-  gem 'rspec-rails'
-  gem 'quiet_assets'
+  gem 'rspec-rails', '~> 3.5.2'
 end
 
 group :development do
@@ -47,5 +46,5 @@ group :development do
   gem 'spring'
 end
 
-ruby "2.3.0"
+ruby "2.3.1"
 
