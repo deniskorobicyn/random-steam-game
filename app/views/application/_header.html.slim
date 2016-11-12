@@ -7,4 +7,4 @@
         p.navbar-text = current_user.nickname
         = link_to 'Sign out', destroy_user_session_url, method: :delete, class: "btn btn-default navbar-btn"
       - else
-        = link_to image_tag('http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_small.png'), user_omniauth_authorize_path(:steam)
+        = link_to image_tag(I18n.t('views.home.steam_sign_in_image')), user_steam_omniauth_authorize_url

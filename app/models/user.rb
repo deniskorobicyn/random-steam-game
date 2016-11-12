@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: [:steam]
 
+  has_many :user_games
+  has_many :games, through: :user_games
+
   def self.find_or_create_steam_oauth(auth, signed_in_resource=nil)
     user = User.find_or_initialize_by(provider: auth.provider, steamid: auth.uid)
 
