@@ -46,6 +46,3 @@ group :development do
   gem 'pry-rails'
   gem 'spring'
 end
-
-ruby "2.3.1"
-
