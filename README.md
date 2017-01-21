@@ -1,6 +1,6 @@
 # Random Steam Game
 
-https://api.travis-ci.org/deniskorobicyn/random-steam-game.svg?branch=master
+![](https://api.travis-ci.org/deniskorobicyn/random-steam-game.svg?branch=master)
 
 Welcome to Random Steam Game source. View it on heroku: http://random-steam-game.herokuapp.com/
 
