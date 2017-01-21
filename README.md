@@ -8,7 +8,7 @@ Welcome to Random Steam Game source. View it on heroku: http://random-steam-game
 
 ### Docker
 
-1. install Docker
+1. install [Docker](https://www.docker.com/)
 2. docker-compose build
 3. docker compose run --rm rails bundle install
 4. docker compose run --rm rails bundle exec rake db:migrate
