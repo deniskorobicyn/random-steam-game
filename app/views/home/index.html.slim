@@ -15,6 +15,6 @@
     .column.right-column
       h1.achievement = I18n.t('views.home.random_achievement_title')
       h3.js-achievement-title.achievement = @service.achievement['displayName']
-      p = image_tag @service.achievement['icon'], class: 'image img-rounded js-achievement-icon' 
+      - if @service.achievement['icon']
+        p = image_tag @service.achievement['icon'], class: 'image img-rounded js-achievement-icon' 
       p.js-achievement-description.ach-descr = @service.achievement['description']
-    
