@@ -1,10 +1,18 @@
-.navbar.navbar-default
-  .header
-    .header-caption
-      h1.caption Random Steam Game
-    .header-user-info
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      .navbar-brand Random Steam Game
       - if current_user
-        p.navbar-text = current_user.nickname
+        ul.nav.navbar-nav
+          li
+            = link_to 'Home', root_url
+          li
+            = link_to 'Games', games_url
+
+    ul.nav.navbar-nav.navbar-right
+      - if current_user
+        .navbar-text
+          = current_user.nickname
         = link_to 'Sign out', destroy_user_session_url, method: :delete, class: "btn btn-default navbar-btn"
       - else
         = link_to image_tag(I18n.t('views.home.steam_sign_in_image')), user_steam_omniauth_authorize_url

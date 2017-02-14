@@ -8,11 +8,14 @@ services:
     environment:
       - BUNDLE_PATH=/bundle/2.3/
       - RAILS_ENV=$RAILS_ENV
+      - RSG_REDIS_HOST=redis
+      - RSG_REDIS_PORT=6379
     volumes:
       - .:/app
       - bundler-data:/bundle
     depends_on:
       - pg
+      - redis
     labels:
       com.dnsdock.name: "random_steam_game"
       com.dnsdock.image: ""
@@ -22,7 +25,31 @@ services:
     environment:
       - POSTGRES_DB=random_steam_game_$RAILS_ENV
 
+  redis:
+    image: redis:3.2.7-alpine
+    command: 'redis-server --appendonly yes --bind 0.0.0.0'
+    volumes:
+      - redis-data:/data
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    environment:
+      - BUNDLE_PATH=/bundle/2.3/
+      - RAILS_ENV=$RAILS_ENV
+      - RSG_REDIS_HOST=redis
+      - RSG_REDIS_PORT=6379
+    volumes:
+      - .:/app
+      - bundler-data:/bundle
+    depends_on:
+      - pg
+      - redis
+
 volumes:
   bundler-data:
     external:
       name: bundler_data
+
+  redis-data:
+    driver: local
