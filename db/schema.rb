@@ -16,10 +16,11 @@ ActiveRecord::Schema.define(version: 20161112161356) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "steamid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",        null: false
+    t.string   "image_url"
+    t.string   "steam_appid"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "user_games", force: :cascade do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 20161112161356) do
     t.integer  "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["game_id", "user_id"], name: "user_games_unique_idx", unique: true, using: :btree
     t.index ["game_id"], name: "index_user_games_on_game_id", using: :btree
     t.index ["user_id"], name: "index_user_games_on_user_id", using: :btree
   end
@@ -52,6 +54,6 @@ ActiveRecord::Schema.define(version: 20161112161356) do
     t.index ["steamid"], name: "index_users_on_steamid", using: :btree
   end
 
-  add_foreign_key "user_games", "games"
-  add_foreign_key "user_games", "users"
+  add_foreign_key "user_games", "games", name: "user_games_game_id_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "user_games", "users", name: "user_games_user_id_fkey", on_update: :cascade, on_delete: :cascade
 end
