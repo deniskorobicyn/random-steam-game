@@ -22,5 +22,15 @@ module Code
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.react.addons = true
+
+    config.react.server_renderer_pool_size = 1
+    config.react.server_renderer_timeout = 20
+    config.react.server_renderer = React::ServerRendering::SprocketsRenderer
+    config.react.server_renderer_options = {
+      files: ["react-server.js", "components.js"],
+      replay_console: true
+    }
   end
 end
