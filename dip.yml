@@ -1,0 +1,61 @@
+version: '1'
+
+environment:
+  DOCKER_RUBY_VERSION: "2.4"
+  COMPOSE_FILE_EXT: development
+  RAILS_ENV: development
+  JOBS: "3"
+
+compose:
+  project_name: random_stream_game${RAILS_ENV}
+
+interaction:
+  sh:
+    service: rails
+    command: bash
+
+  yarn:
+    service: rails
+    command: yarn
+
+  bundle:
+    service: rails
+    command: bundle
+
+  rake:
+    service: rails
+    command: bundle exec rake
+
+  rails:
+    service: rails
+    subcommands:
+      s:
+        service: rails
+
+      c:
+        command: bundle exec rails c
+
+      g:
+        command: bundle exec rails g
+
+  sidekiq:
+    service: sidekiq
+
+  rspec:
+    service: rails
+    environment:
+      RAILS_ENV: test
+    command: bundle exec rspec
+
+  psql:
+    service: rails
+    command: psql -h pg -U postgres pulscen
+
+  'redis-cli':
+    service: redis
+    command: redis-cli -h redis
+
+provision:
+  - docker volume create --name bundler_data
+  - dip bundle install
+  - dip bundle exec rake db:migrate
