@@ -1,0 +1,59 @@
+version: '2'
+services:
+  rails:
+    build: .
+    command: 'bash -c "rm -f /var/run/rails.pid && bundle exec rails s -b 0.0.0.0 -p 80 --pid /var/run/rails.pid"'
+    expose:
+      - '80'
+    environment:
+      - BUNDLE_PATH=/bundle/$DOCKER_RUBY_VERSION/
+      - RAILS_ENV=$RAILS_ENV
+      - RSG_REDIS_HOST=redis
+      - RSG_REDIS_PORT=6379
+    volumes:
+      - .:/app
+      - bundler-data:/bundle
+      - node-modules:/app/node_modules/
+    depends_on:
+      - pg
+      - redis
+    labels:
+      com.dnsdock.name: "random_steam_game"
+      com.dnsdock.image: ""
+
+  pg:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_DB=random_steam_game_$RAILS_ENV
+
+  redis:
+    image: redis:3.2.7-alpine
+    command: 'redis-server --appendonly yes --bind 0.0.0.0'
+    volumes:
+      - redis-data:/data
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    environment:
+      - BUNDLE_PATH=/bundle/$DOCKER_RUBY_VERSION/
+      - RAILS_ENV=$RAILS_ENV
+      - RSG_REDIS_HOST=redis
+      - RSG_REDIS_PORT=6379
+    volumes:
+      - .:/app
+      - bundler-data:/bundle
+    depends_on:
+      - pg
+      - redis
+
+volumes:
+  bundler-data:
+    external:
+      name: bundler_data
+
+  node-modules:
+    driver: local
+
+  redis-data:
+    driver: local
