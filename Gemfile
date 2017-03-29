@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
 # -- Framework
-gem 'rails', '= 5.0.0.1'
-gem 'draper', '~> 3.0.0.pre1'
+gem 'rails', '= 5.0.2'
 
 # -- Serialization
 gem 'active_model_serializers', '~> 0.10.0'
@@ -27,6 +26,7 @@ gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.2.1'
 gem 'bootstrap-sass' , '~> 3.3.7'
 gem 'react-rails', '~> 1.10.0'
+gem 'browserify-rails'
 
 # -- Buisness Logic
 gem 'steam-api', '~> 1.1.0'
