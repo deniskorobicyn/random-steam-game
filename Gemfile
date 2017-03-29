@@ -18,7 +18,6 @@ gem 'kaminari', '~> 1.0.1'
 gem 'pg', '~> 0.19'
 gem 'redis', '~> 3.2'
 
-
 # -- Frontend
 gem 'bootstrap-sass' , '~> 3.3.7'
 gem 'browserify-rails'
@@ -31,6 +30,10 @@ gem 'uglifier', '~> 3.0.3'
 # -- Buisness Logic
 gem "interactor-rails", "~> 2.0.2"
 gem 'steam-api', '~> 1.1.0'
+
+# -- background
+gem 'sidekiq', '5.0.0.beta1'
+gem 'sidekiq-status', '0.6.0 '
 
 # -- background
 gem 'sidekiq', '5.0.0.beta1'

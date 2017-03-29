@@ -4,15 +4,16 @@
 
 Welcome to Random Steam Game source. View it on heroku: http://random-steam-game.herokuapp.com/
 
-## Development & Contributing
+## Development
 
 ### Docker
 
 1. install [Docker](https://www.docker.com/)
 2. docker-compose build
-3. docker compose run --rm rails bundle install
-4. docker compose run --rm rails bundle exec rake db:migrate
-5. docker compose run --rm rails
+3. cp config/database.yml.docker config/database.yml
+4. docker compose run --rm rails bundle install
+5. docker compose run --rm rails bundle exec rake db:migrate
+6. docker compose run --rm rails
 
 ### Vagrant
 1. Go to [vagrant](https://www.vagrantup.com/downloads.html) and install it
