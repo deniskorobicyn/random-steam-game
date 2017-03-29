@@ -4,9 +4,7 @@
 
 .btn.btn-default.js-start-sync Sync Games with steam
 
-.ul
-  - @games.each do |game|
-    li
-      = game.name
+= react_component 'Games', {games:  ActiveModel::Serializer::CollectionSerializer.new(@games, serializer: ::GameSerializer)},  {:prerender => true}
 
-= paginate @games
+- content_for(:javascript_bottom) do
+  = javascript_include_tag 'games'

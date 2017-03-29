@@ -24,6 +24,7 @@ module Code
     config.active_record.raise_in_transactional_callbacks = true
 
     config.react.addons = true
+    config.web_console.whitelisted_ips = ['10.0.75.1', '172.16.0.0/12']
 
     config.react.server_renderer_pool_size = 1
     config.react.server_renderer_timeout = 20
@@ -32,5 +33,8 @@ module Code
       files: ["react-server.js", "components.js"],
       replay_console: true
     }
+
+    config.browserify_rails.commandline_options =
+      "-t [ babelify --presets [ es2015 react stage-0 ] --plugins [ transform-class-properties ] --sourceType module ]"
   end
 end
