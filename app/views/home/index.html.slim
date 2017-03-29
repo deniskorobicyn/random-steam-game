@@ -1,20 +1,28 @@
 .container
-  .text-center
-    .column.left-column
-      .text-center
-        a.btn.btn-primary.js-regenerate[data-action-url = api_v1_random_games_url] = I18n.t('views.home.regenerate_all')
-    .column.right-column
-      h1.game = I18n.t('views.home.random_game_title')
-      p = image_tag @service.game.decorate.full_image_url, class: "image img-rounded js-game-image"
-      h3.js-game-name.game = @service.game.name
-  .text-center.js-achievement-block hidden = @service.achievement.blank?
-    .column.left-column
-      .text-center
-        a.btn.btn-primary.js-new-achievement data-action-url = api_v1_random_achievements_url data-appid = @service.game.steam_appid
-          = I18n.t('views.home.regenerate_achievement')
-    .column.right-column
-      h1.achievement = I18n.t('views.home.random_achievement_title')
-      h3.js-achievement-title.achievement = @service.achievement['displayName']
-      - if @service.achievement['icon']
-        p = image_tag @service.achievement['icon'], class: 'image img-rounded js-achievement-icon'
-      p.js-achievement-description.ach-descr = @service.achievement['description']
+  - if @service.game
+    .text-center
+      .column.left-column
+        .text-center
+          a.btn.btn-primary.js-regenerate[data-action-url = api_v1_random_games_url] = I18n.t('views.home.regenerate_all')
+      .column.right-column
+        h1.game = I18n.t('views.home.random_game_title')
+        p = image_tag @service.game.full_image_url, class: "image img-rounded js-game-image"
+        h3.js-game-name.game = @service.game.name
+    .text-center.js-achievement-block hidden = @service.achievement.blank?
+      .column.left-column
+        .text-center
+          a.btn.btn-primary.js-new-achievement data-action-url = api_v1_random_achievements_url data-appid = @service.game.steam_appid
+            = I18n.t('views.home.regenerate_achievement')
+      .column.right-column
+        h1.achievement = I18n.t('views.home.random_achievement_title')
+        h3.js-achievement-title.achievement = @service.achievement['displayName']
+        - if @service.achievement['icon']
+          p = image_tag @service.achievement['icon'], class: 'image img-rounded js-achievement-icon'
+        p.js-achievement-description.ach-descr = @service.achievement['description']
+  - else
+    .text-center
+      p please sych you games by this url
+      = link_to "Games", games_url
+
+- content_for(:javascript_bottom) do
+  = javascript_include_tag 'home'

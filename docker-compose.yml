@@ -6,13 +6,14 @@ services:
     expose:
       - '80'
     environment:
-      - BUNDLE_PATH=/bundle/2.3/
+      - BUNDLE_PATH=/bundle/$DOCKER_RUBY_VERSION/
       - RAILS_ENV=$RAILS_ENV
       - RSG_REDIS_HOST=redis
       - RSG_REDIS_PORT=6379
     volumes:
       - .:/app
       - bundler-data:/bundle
+      - node-modules:/app/node_modules/
     depends_on:
       - pg
       - redis
@@ -35,7 +36,7 @@ services:
     build: .
     command: bundle exec sidekiq
     environment:
-      - BUNDLE_PATH=/bundle/2.3/
+      - BUNDLE_PATH=/bundle/$DOCKER_RUBY_VERSION/
       - RAILS_ENV=$RAILS_ENV
       - RSG_REDIS_HOST=redis
       - RSG_REDIS_PORT=6379
@@ -50,6 +51,9 @@ volumes:
   bundler-data:
     external:
       name: bundler_data
+
+  node-modules:
+    driver: local
 
   redis-data:
     driver: local

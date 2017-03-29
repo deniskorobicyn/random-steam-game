@@ -5,7 +5,7 @@ module Api
         before_action :authenticate_user!
 
         def index
-          game = RandomGame.call(user: current_user).game.decorate
+          game = RandomGame.call(user: current_user).game
           render json: {
             appid: game.steam_appid,
             name: game.name,
