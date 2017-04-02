@@ -35,10 +35,6 @@ gem 'steam-api', '~> 1.1.0'
 gem 'sidekiq', '5.0.0.beta1'
 gem 'sidekiq-status', '0.6.0 '
 
-# -- background
-gem 'sidekiq', '5.0.0.beta1'
-gem 'sidekiq-status', '0.6.0 '
-
 # -- Server
 group :production do
   gem 'rails_12factor'

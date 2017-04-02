@@ -12,22 +12,25 @@ function progress_job(id){
     success: (data) => {
       switch(data.status){
         case 'complete': {
-          $('.js-progress-bar-value').html('100% Complete')
-          $('.js-progress-bar').attr('style', 'width: 100%')
+          $('.js-progress-bar-value').html('100% Complete');
+          $('.js-progress-bar').attr('style', 'width: 100%');
+          location = location;
+          break;
         }
         case 'working': {
-          percent = data.at / data.total * 100
-          $('.js-progress-bar-value').html(Math.floor(percent).toString() + '% Complete')
-          $('.js-progress-bar').attr('style', 'width: ' + percent.toString() + '%')
-          setTimeout(progress_job, 1000, id)
+          let percent = data.at / data.total * 100;
+          $('.js-progress-bar-value').html(Math.floor(percent).toString() + '% Complete');
+          $('.js-progress-bar').attr('style', 'width: ' + percent.toString() + '%');
+          setTimeout(progress_job, 1000, id);
+          break;
         }
         default: {
-          $('.js-progress-bar-value').html('FAILED')
+          $('.js-progress-bar-value').html('FAILED');
         }
       }
     },
     failure: (data) => {
-      $('.js-progress-bar-value').html('FAILED')
+      $('.js-progress-bar-value').html('FAILED');
     }
   });
 }
