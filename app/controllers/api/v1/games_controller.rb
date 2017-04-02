@@ -4,7 +4,7 @@ module Api
       before_action :authenticate_user!
 
       def index
-        # TODO
+        render json: current_user.games.order(:name)
       end
 
       def create

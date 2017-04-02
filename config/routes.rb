@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root 'home#index'
-    resources :games, only: :index
+    resources :games, only: [:index, :edit, :update, :new, :create, :destroy]
   end
 
   unauthenticated do

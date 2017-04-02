@@ -6,18 +6,22 @@ module Games
 
     def sync
       games.each_with_index do |game_hash, index|
-        game = Game.find_or_initialize_by(
-          steam_appid: game_hash['appid']
-        )
+        Game.transaction do
+          game = Game.find_or_initialize_by(
+            steam_appid: game_hash['appid']
+          )
 
-        game.name = game_hash['name']
-        game.image_url = game_hash['img_logo_url']
+          game.name = game_hash['name']
+          game.image_url = game_hash['img_logo_url']
 
-        game_user = game.user_games.find_or_initialize_by(user: @user)
+          game_user = game.user_games.find_or_initialize_by(user: @user)
 
-        saved = game.save && game_user.save
+          saved = game.save &&
+                  game_user.save &&
+                  Games::SyncSteamGendresService.new(game).call
 
-        yield(saved, index) if block_given?
+          yield(saved, index) if block_given?
+        end
       end
     end
 
@@ -32,7 +36,7 @@ module Games
     end
 
     def games_json
-      @games_json ||=
+      @games_json ||= Rails.cache.fetch(@user.id, expires_in: 3.hours) do
         Steam::Player.owned_games(
           @user.steamid,
           params: {
@@ -40,6 +44,7 @@ module Games
             include_played_free_games: '1'
           }
         )
+      end
     end
   end
 end

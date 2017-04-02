@@ -38,6 +38,9 @@ interaction:
       g:
         command: bundle exec rails g
 
+      routes:
+        command: bundle exec rails routes
+
   sidekiq:
     service: sidekiq
 

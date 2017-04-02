@@ -4,7 +4,18 @@
 
 .btn.btn-default.js-start-sync Sync Games with steam
 
-= react_component 'Games', {games:  ActiveModel::Serializer::CollectionSerializer.new(@games, serializer: ::GameSerializer)},  {:prerender => true}
+.btn.btn-defaul
+  = link_to 'Create Game', new_game_url
+
+- @games.each do |game|
+  .game-index
+    h4.game_name
+      = game.name
+    .game_genre
+      = game.genres.map(&:description).join(',')
+    .game_edit_link
+      = link_to 'Edit', edit_game_url(game)
+      = link_to 'Delete', game_url(game), method: :delete
 
 - content_for(:javascript_bottom) do
   = javascript_include_tag 'games'

@@ -3,6 +3,17 @@
     .text-center
       .column.left-column
         .text-center
+          p Choose you game type (OPTIONAL)
+      .column.right-column
+        .js-genre-checkboxes
+        - @genres.in_groups_of(@genres.size/2, false) do |genre_group|
+          .column.text-left
+            - genre_group.each do |genre|
+              p.genre_checkbox
+                = check_box_tag genre.id, '1', false, class: 'js-genre-checkbox'
+                = label_tag genre.description
+      .column.left-column
+        .text-center
           a.btn.btn-primary.js-regenerate[data-action-url = api_v1_random_games_url] = I18n.t('views.home.regenerate_all')
       .column.right-column
         h1.game = I18n.t('views.home.random_game_title')
