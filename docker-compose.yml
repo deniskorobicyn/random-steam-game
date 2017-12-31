@@ -2,12 +2,12 @@ version: '2'
 services:
   rails:
     build: .
-    command: 'bash -c "rm -f /var/run/rails.pid && bundle exec rails s -b 0.0.0.0 -p 80 --pid /var/run/rails.pid"'
-    expose:
-      - '80'
+    command: 'bash -c "rm -f /var/run/rails.pid && bundle exec rails s -b 0.0.0.0 --pid /var/run/rails.pid"'
+    ports:
+      - '3000:3000'
     environment:
-      - BUNDLE_PATH=/bundle/$DOCKER_RUBY_VERSION/
-      - RAILS_ENV=$RAILS_ENV
+      - BUNDLE_PATH=/bundle/2.4/
+      - RAILS_ENV=development
       - RSG_REDIS_HOST=redis
       - RSG_REDIS_PORT=6379
     volumes:
@@ -17,14 +17,9 @@ services:
     depends_on:
       - pg
       - redis
-    labels:
-      com.dnsdock.name: "random_steam_game"
-      com.dnsdock.image: ""
 
   pg:
     image: postgres:9.6
-    environment:
-      - POSTGRES_DB=random_steam_game_$RAILS_ENV
     volumes:
       - pg-data:/var/lib/postgresql/data
 
@@ -38,8 +33,8 @@ services:
     build: .
     command: bundle exec sidekiq
     environment:
-      - BUNDLE_PATH=/bundle/$DOCKER_RUBY_VERSION/
-      - RAILS_ENV=$RAILS_ENV
+      - BUNDLE_PATH=/bundle/2.4/
+      - RAILS_ENV=development
       - RSG_REDIS_HOST=redis
       - RSG_REDIS_PORT=6379
     volumes:

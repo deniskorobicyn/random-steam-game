@@ -6,9 +6,6 @@ environment:
   RAILS_ENV: development
   JOBS: "3"
 
-compose:
-  project_name: random_stream_game${RAILS_ENV}
-
 interaction:
   sh:
     service: rails
@@ -29,9 +26,6 @@ interaction:
   rails:
     service: rails
     subcommands:
-      s:
-        service: rails
-
       c:
         command: bundle exec rails c
 
@@ -40,6 +34,10 @@ interaction:
 
       routes:
         command: bundle exec rails routes
+
+  server:
+    service: rails
+    compose_run_options: [service-ports]
 
   sidekiq:
     service: sidekiq
@@ -52,7 +50,7 @@ interaction:
 
   psql:
     service: rails
-    command: psql -h pg -U postgres pulscen
+    command: psql -h pg -U postgres random_steam_game
 
   'redis-cli':
     service: redis
@@ -61,4 +59,5 @@ interaction:
 provision:
   - docker volume create --name bundler_data
   - dip bundle install
+  - dip bundle exec rake db:create
   - dip bundle exec rake db:migrate
