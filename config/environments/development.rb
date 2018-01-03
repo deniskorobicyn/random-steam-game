@@ -40,5 +40,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.react.variant = :development
+  config.web_console.whitelisted_ips = ['10.0.75.1', '172.16.0.0/12']
 end

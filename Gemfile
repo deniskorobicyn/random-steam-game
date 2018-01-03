@@ -24,9 +24,7 @@ gem 'redis', '~> 3.2'
 
 # -- Frontend
 gem 'bootstrap-sass' , '~> 3.3.7'
-gem 'browserify-rails'
 gem 'jquery-rails', '~> 4.2.1'
-gem 'react-rails', '~> 1.10.0'
 gem 'sass-rails', '~> 5.0.6'
 gem 'slim-rails', '~> 3.1.1'
 gem 'uglifier', '~> 3.0.3'
