@@ -10,7 +10,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
-/tmp
+tmp/
 
 # Ignore vagrant
 .vagrant
@@ -24,3 +24,4 @@ config/database.yml
 # Ignore Mac OS X file
 .DS_Store
 
+coverage/
