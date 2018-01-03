@@ -13,11 +13,17 @@ services:
 addons:
   postgresql: "9.6"
 
+before_install:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+
 before_script:
   - cp config/database.yml.travis config/database.yml
+  - ./cc-test-reporter before-build
 
 after_script:
-  bundle exec brakeman
+  - ./cc-test-reporter after-build --exit-code $EXIT_CODE
+  - bundle exec brakeman
 
 script:
   - bundle exec rake db:schema:load
