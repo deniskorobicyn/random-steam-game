@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::Random::GamesController, type: :controller do
+RSpec.describe Api::V1::Random::GamesController, type: :controller do
   let(:user) { create :user }
 
   before do
