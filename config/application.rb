@@ -22,18 +22,5 @@ module Code
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-
-    config.react.addons = true
-
-    config.react.server_renderer_pool_size = 1
-    config.react.server_renderer_timeout = 20
-    config.react.server_renderer = React::ServerRendering::SprocketsRenderer
-    config.react.server_renderer_options = {
-      files: ["react-server.js", "components.js"],
-      replay_console: true
-    }
-
-    config.browserify_rails.commandline_options =
-      "-t [ babelify --presets [ es2015 react stage-0 ] --plugins [ transform-class-properties ] --sourceType module ]"
   end
 end
