@@ -1,6 +1,6 @@
 # Random Steam Game
 
-![](https://api.travis-ci.org/deniskorobicyn/random-steam-game.svg?branch=master)
+[![Build Status](https://travis-ci.org/deniskorobicyn/random-steam-game.svg?branch=master)](https://travis-ci.org/deniskorobicyn/random-steam-game)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4afe18cb77a782fe4455/maintainability)](https://codeclimate.com/github/deniskorobicyn/random-steam-game/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/4afe18cb77a782fe4455/test_coverage)](https://codeclimate.com/github/deniskorobicyn/random-steam-game/test_coverage)
 
