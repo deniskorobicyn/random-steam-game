@@ -7,13 +7,11 @@ services:
       - '3000:3000'
     environment:
       - BUNDLE_PATH=/bundle/2.4/
-      - RAILS_ENV=development
       - RSG_REDIS_HOST=redis
       - RSG_REDIS_PORT=6379
     volumes:
       - .:/app
       - bundler-data:/bundle
-      - node-modules:/app/node_modules/
     depends_on:
       - pg
       - redis
@@ -34,7 +32,6 @@ services:
     command: bundle exec sidekiq
     environment:
       - BUNDLE_PATH=/bundle/2.4/
-      - RAILS_ENV=development
       - RSG_REDIS_HOST=redis
       - RSG_REDIS_PORT=6379
     volumes:
