@@ -13,6 +13,10 @@ gem 'omniauth-steam', '~> 1.0.3'
 # -- Environment
 gem 'figaro', '~> 1.1.1'
 
+# -- Security
+gem 'bundle-audit'
+gem 'brakeman'
+
 # -- Database
 gem 'kaminari', '~> 1.0.1'
 gem 'pg', '~> 0.19'

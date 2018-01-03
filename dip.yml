@@ -23,6 +23,15 @@ interaction:
     service: rails
     command: bundle exec rake
 
+  bundle-audit:
+    service: rails
+    command: bundle exec bundle audit
+    compose_run_options: [no-deps]
+
+  brakeman:
+    service: rails
+    command: bundle exec brakeman
+
   rails:
     service: rails
     subcommands:
