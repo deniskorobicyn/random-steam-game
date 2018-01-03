@@ -16,6 +16,9 @@ addons:
 before_script:
   - cp config/database.yml.travis config/database.yml
 
+after_script:
+  bundle exec brakeman
+
 script:
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
