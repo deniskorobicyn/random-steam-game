@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    if (context = GameSaver.call(params: params, current_user: current_user)).success?
+    if (context = Games::Save.call(params: games_params, current_user: current_user)).success?
       redirect_to games_url
     else
       @game = context.game
@@ -40,6 +40,9 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def games_params
+  end
 
   def page
     params[:page] || 1

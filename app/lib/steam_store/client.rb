@@ -6,6 +6,7 @@ module SteamStore
 
     def get(resource, params: {})
       response = @conn.get resource, params
+
       JSON.parse(response.body)
     rescue JSON::ParserError
       nil

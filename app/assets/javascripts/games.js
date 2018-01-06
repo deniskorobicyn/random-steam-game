@@ -1,10 +1,4 @@
 function progress_job(id){
-  let
-    finished = false,
-    failed = false,
-    progress = 0,
-    progress_string = "";
-
   $.ajax({
     url: '/api/v1/jobs',
     method: 'GET',
@@ -37,6 +31,8 @@ function progress_job(id){
 
 $('.js-start-sync').on('click', () => {
     $('.js-progress').removeClass('hidden');
+    $('.js-progress-bar-value').html('0% Complete');
+
     $.ajax({
       url: '/api/v1/games/sync',
       method: 'POST',
