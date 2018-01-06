@@ -6,7 +6,7 @@ describe RandomizeGame do
     let!(:game) { create :game, users: [user] }
 
     before do
-      allow(Steam::UserStats).to receive(:game_schema).with(320).and_return({})
+      allow(Steam::UserStats).to receive(:game_schema).with(game.steam_appid).and_return({})
     end
 
     it 'adds to context game, image and appid' do
