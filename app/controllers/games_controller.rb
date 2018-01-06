@@ -1,6 +1,4 @@
 class GamesController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @games = current_user.games.preload(:genres).order(:name)
   end
@@ -10,7 +8,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    if (context = Games::Save.call(params: games_params, current_user: current_user)).success?
+    if (context = Games::Save.call(game: current_user.games.build, params: games_params, current_user: current_user)).success?
       redirect_to games_url
     else
       @game = context.game
@@ -19,11 +17,11 @@ class GamesController < ApplicationController
   end
 
   def edit
-    @game = Game.find(params[:id])
+    @game = game
   end
 
   def update
-    if (context = GameSaver.call(params: params, current_user: current_user)).success?
+    if (context = Games::Save.call(game: game, params: games_params, current_user: current_user)).success?
       redirect_to games_url
     else
       @game = context.game
@@ -32,9 +30,7 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:id])
-
-    @game.destroy!
+    game.destroy!
 
     redirect_to games_url
   end
@@ -42,6 +38,11 @@ class GamesController < ApplicationController
   private
 
   def games_params
+    params.require(:game).permit(:name)
+  end
+
+  def game
+    @game ||= Game.find(params[:id])
   end
 
   def page

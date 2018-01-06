@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @service = Chooser.call(user: current_user, params: params)
+    @service = RandomizeGame.call(user: current_user, genre_ids: params[:genre_ids])
     @genres = Genre.all
   end
 end

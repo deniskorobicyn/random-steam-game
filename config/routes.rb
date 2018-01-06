@@ -5,16 +5,19 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :random do
         resources :games, only: :index
-        resources :achievements, only: :index
+
+        resources :steam, param: :appid, only: [] do
+          resource :achievement, only: :show
+        end
       end
 
-      resources :games, only: [:index, :create, :destory, :update]
+      resources :games, only: :index
 
       namespace :games do
-        resources :sync, controller: :sync, only: :create
+        resource :sync, controller: :sync, only: :create
       end
 
-      resource :jobs, only: :show
+      resources :jobs, only: :show
     end
   end
 

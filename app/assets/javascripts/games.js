@@ -1,8 +1,8 @@
 function progress_job(id){
   $.ajax({
-    url: '/api/v1/jobs',
+    // TODO: define router config on application.js
+    url: '/api/v1/jobs/' + id,
     method: 'GET',
-    data: "id=" + id,
     success: (data) => {
       switch(data.status){
         case 'complete': {

@@ -1,4 +1,5 @@
 class Users::OmniauthCallbacksController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:steam, :failure]
   skip_before_action :verify_authenticity_token, only: [:steam, :failure]
 
   def steam
@@ -8,7 +9,7 @@ class Users::OmniauthCallbacksController < ApplicationController
       sign_in_and_redirect @user, event: :authentication
       flash[:notice] = "Steam" if is_navigational_format?
     else
-      redirect_to root_url 
+      redirect_to root_url
     end
   end
 
