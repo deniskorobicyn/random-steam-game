@@ -1,4 +1,8 @@
 en:
+  api:
+    errors:
+      not_found: Not found
+      bad_request: Bad request
   views:
     home:
       steam_sign_in_image: 'http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_small.png'

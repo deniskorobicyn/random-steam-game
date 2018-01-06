@@ -1,8 +1,7 @@
-function reload_achievement() {
+function reload_achievement(appid) {
   $.ajax({
-    url: $('.js-new-achievement').data('action-url'),
+    url: 'api/v1/random/steam/' + appid + '/achievement',
     method: 'GET',
-    data: 'appid=' + $('.js-new-achievement').data('appid'),
     success: (data) => {
       if(Object.keys(data.achievement).length != 0) {
         $('.js-achievement-title').html(data.achievement.displayName);
@@ -29,12 +28,16 @@ $('.js-regenerate').on('click', () => {
       genre_ids: genre_ids.join(',')
     },
     success: (data) => {
+      console.log(data);
       $('.js-game-name').html(data.name);
-      $('.js-game-image').attr('src', data.img);
-      $('.js-new-achievement').data('appid', data.appid);
-      reload_achievement();
+      $('.js-game-image').attr('src', data.full_image_url);
+      $('.js-new-achievement').data('appid', data.steam_appid);
+      reload_achievement(data.steam_appid);
     }
   });
 });
 
-$('.js-new-achievement').on('click', () => { reload_achievement(); });
+$('.js-new-achievement').on('click', () => {
+  let app_id = $('.js-new-achievement').data('appid')
+  reload_achievement(app_id);
+});

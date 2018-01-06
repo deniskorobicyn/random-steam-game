@@ -1,16 +1,15 @@
 module Api
   module V1
     module Random
-      class GamesController < ApplicationController
-        before_action :authenticate_user!
-
+      class GamesController < Api::BaseController
         def index
-          game = RandomGame.call(user: current_user, params: params).game
-          render json: {
-            appid: game.steam_appid,
-            name: game.name,
-            img: game.full_image_url
-          }
+          result = Choosers::PickGame.call(user: current_user, genre_ids: params[:genre_ids])
+
+          if result.success?
+            result result.game, serializer: GameSerializer
+          else
+            not_found
+          end
         end
       end
     end
