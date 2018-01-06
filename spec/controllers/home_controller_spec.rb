@@ -4,7 +4,7 @@ RSpec.describe HomeController, type: :controller do
 
   before do
     sign_in(create :user)
-     allow(Steam::UserStats).to receive(:game_schema).with(320).and_return({})
+    allow(Steam::UserStats).to receive(:game_schema).with(320).and_return({})
   end
 
   describe "GET #index" do
