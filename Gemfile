@@ -11,7 +11,7 @@ gem 'devise', '~> 4.2.0'
 gem 'omniauth-steam', '~> 1.0.3'
 
 # -- Environment
-gem 'figaro', '~> 1.1.1'
+gem 'dotenv-rails'
 
 # -- Security
 gem 'bundle-audit'
@@ -54,6 +54,6 @@ end
 
 group :development do
   gem 'pry-rails'
-  gem 'spring'
   gem 'web-console', '~> 3.4'
+  gem "capistrano", "~> 3.10", require: false
 end

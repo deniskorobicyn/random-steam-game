@@ -15,12 +15,6 @@ tmp/
 # Ignore vagrant
 .vagrant
 
-# Ignore configs
-config/database.yml
-
-# Ignore application configuration
-/config/application.yml
-
 # Ignore Mac OS X file
 .DS_Store
 
