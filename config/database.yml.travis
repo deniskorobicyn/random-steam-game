@@ -1,5 +1,0 @@
-test:
-  adapter: postgresql
-  database: travis
-  user: travis
-  port: 5432
