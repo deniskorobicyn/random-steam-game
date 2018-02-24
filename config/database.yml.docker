@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: postgres
+  pool: 5
+  host: pg
+
+development:
+  <<: *default
+  database: random_steam_game_dev
+
+test:
+  <<: *default
+  database: random_steam_game_test
+
