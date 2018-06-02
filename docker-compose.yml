@@ -46,9 +46,6 @@ volumes:
     external:
       name: bundler_data
 
-  node-modules:
-    driver: local
-
   redis-data:
     driver: local
 

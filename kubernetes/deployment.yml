@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: railsapp-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: railsapp
+    spec:
+      containers:
+      - name: railsapp
+        image: deniskorobicyn/random-steam-game:0.1
+        ports:
+        - containerPort: 3000
+        env:
+          - name: RSG_PG_DATABASE_USER
+            value: postgres
+          - name: SECRET_KEY_BASE
+            value: supersecret
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: railsapp-service
+spec:
+  selector:
+    app: railsapp
+  type: NodePort
+  #type: LoadBalancer
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 3000

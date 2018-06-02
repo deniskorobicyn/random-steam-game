@@ -10,63 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401100751) do
+ActiveRecord::Schema.define(version: 2017_04_01_100751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "game_genres", force: :cascade do |t|
-    t.integer  "game_id",    null: false
-    t.integer  "genre_id",   null: false
+  create_table "game_genres", id: :serial, force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.integer "genre_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id", "genre_id"], name: "game_genres_unique_idx", unique: true, using: :btree
+    t.index ["game_id", "genre_id"], name: "game_genres_unique_idx", unique: true
   end
 
-  create_table "games", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.string   "image_url"
-    t.string   "steam_appid"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.string   "description", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["description"], name: "genres_unique_descriptions", unique: true, using: :btree
-  end
-
-  create_table "user_games", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "game_id"
+  create_table "games", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "image_url"
+    t.string "steam_appid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id", "user_id"], name: "user_games_unique_idx", unique: true, using: :btree
-    t.index ["game_id"], name: "index_user_games_on_game_id", using: :btree
-    t.index ["user_id"], name: "index_user_games_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "nickname"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "genres", id: :serial, force: :cascade do |t|
+    t.string "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["description"], name: "genres_unique_descriptions", unique: true
+  end
+
+  create_table "user_games", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id", "user_id"], name: "user_games_unique_idx", unique: true
+    t.index ["game_id"], name: "index_user_games_on_game_id"
+    t.index ["user_id"], name: "index_user_games_on_user_id"
+  end
+
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "nickname"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "provider"
-    t.string   "steamid"
-    t.index ["provider"], name: "index_users_on_provider", using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-    t.index ["steamid"], name: "index_users_on_steamid", using: :btree
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "steamid"
+    t.index ["provider"], name: "index_users_on_provider"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["steamid"], name: "index_users_on_steamid"
   end
 
   add_foreign_key "game_genres", "games", name: "game_genres_game_id_fkey", on_update: :cascade, on_delete: :cascade
