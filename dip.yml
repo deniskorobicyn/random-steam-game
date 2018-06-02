@@ -11,10 +11,6 @@ interaction:
     service: rails
     command: bash
 
-  yarn:
-    service: rails
-    command: yarn
-
   bundle:
     service: rails
     command: bundle

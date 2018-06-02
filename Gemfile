@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 
 # -- Framework
-gem 'rails', '= 5.0.2'
+gem 'rails', '= 5.2.0'
 
 # -- Serialization
-gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers', '~> 0.10.7'
 
 # -- Authentificcation
-gem 'devise', '~> 4.2.0'
+gem 'devise', '~> 4.4.3'
 gem 'omniauth-steam', '~> 1.0.3'
 
 # -- Environment
-gem 'dotenv-rails'
+gem 'dotenv-rails', '~> 2.4.0'
 
 # -- Security
 gem 'bundle-audit'
@@ -30,7 +30,7 @@ gem 'slim-rails', '~> 3.1.1'
 gem 'uglifier', '~> 3.0.3'
 
 # -- Buisness Logic
-gem "interactor-rails", "~> 2.0.2"
+gem "interactor-rails", "~> 2.2.0"
 gem 'steam-api', '~> 1.1.0'
 
 # -- background
