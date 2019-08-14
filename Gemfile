@@ -24,7 +24,7 @@ gem 'redis', '~> 3.2'
 
 # -- Frontend
 gem 'bootstrap-sass' , '~> 3.4.0'
-gem 'jquery-rails', '~> 4.3.4'
+gem 'jquery-rails', '~> 4.3.5'
 gem 'sass-rails', '~> 5.0.6'
 gem 'slim-rails', '~> 3.1.1'
 gem 'uglifier', '~> 3.0.3'
@@ -45,15 +45,15 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '>= 4.5.0'
   gem 'rspec-rails', '~> 3.5.2'
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'rails-controller-testing'
+  gem 'rails-controller-testing', '>= 1.0.2'
   gem 'simplecov'
 end
 
 group :development do
   gem 'pry-rails'
-  gem 'web-console', '~> 3.4'
+  gem 'web-console', '~> 3.4', '>= 3.4.0'
   gem "capistrano", "~> 3.10", require: false
 end
