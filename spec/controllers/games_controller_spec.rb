@@ -15,7 +15,7 @@ RSpec.describe GamesController, type: :controller do
     it "returns http success" do
       get :index
 
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:ok)
       expect(assigns(:games).map(&:id)).to match_array([game.id])
     end
   end
@@ -24,7 +24,7 @@ RSpec.describe GamesController, type: :controller do
     it "returns http success" do
       get :new
 
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:ok)
     end
   end
 
@@ -42,7 +42,7 @@ RSpec.describe GamesController, type: :controller do
     it "returns http success" do
       get :edit, params: {id: game.id}
 
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:ok)
     end
   end
 

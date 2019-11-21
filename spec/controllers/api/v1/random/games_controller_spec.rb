@@ -14,7 +14,7 @@ RSpec.describe Api::V1::Random::GamesController, type: :controller do
         allow(::Choosers::PickGame).to receive(:call).with(user: user, genre_ids: nil).and_return(double('Interactor::Context', "success?" => true, game: game))
         get :index
 
-        expect(response).to have_http_status(:success)
+        expect(response).to have_http_status(:ok)
       end
 
       it "returns not found for failed call" do
