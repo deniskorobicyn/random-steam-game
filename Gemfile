@@ -18,7 +18,7 @@ gem 'bundle-audit'
 gem 'brakeman'
 
 # -- Database
-gem 'kaminari', '~> 1.0.1'
+gem 'kaminari', '~> 1.1.1'
 gem 'pg', '~> 0.19'
 gem 'redis', '~> 3.3'
 
