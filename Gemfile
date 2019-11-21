@@ -32,7 +32,7 @@ gem 'steam-api', '~> 1.1.0'
 
 # -- background
 gem 'sidekiq', '5.0.0.beta1'
-gem 'sidekiq-status', '0.6.0 '
+gem 'sidekiq-status', '1.1.4'
 
 # -- Server
 group :production do
