@@ -12,6 +12,6 @@ RUN apt-get update -qq \
 RUN echo 'gem: --no-rdoc --no-ri --no-document' > /root/.gemrc \
   && ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts \
   && gem update --system 2.6.12 \
-  && gem install bundler --version 2.0.1
+  && gem install bundler --version 2.0.2
 
 WORKDIR /app
