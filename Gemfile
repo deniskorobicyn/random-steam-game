@@ -23,7 +23,7 @@ gem 'redis', '~> 3.3'
 gem 'bootstrap-sass' , '~> 3.4.0'
 gem 'jquery-rails', '~> 4.3.4'
 gem 'sass-rails', '~> 5.0.6'
-gem 'slim-rails', '~> 3.1.1'
+gem 'slim-rails', '~> 3.2.0'
 gem 'uglifier', '~> 4.2.0'
 
 # -- Buisness Logic
