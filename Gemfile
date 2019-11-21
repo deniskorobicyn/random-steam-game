@@ -56,5 +56,5 @@ group :development do
   gem 'pry-rails'
   gem 'web-console', '~> 3.4'
   gem 'awesome_print'
-  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano", "~> 3.11", require: false
 end
