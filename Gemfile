@@ -8,7 +8,7 @@ gem 'active_model_serializers', '~> 0.10.7'
 
 # -- Authentificcation
 gem 'devise', '~> 4.4.3'
-gem 'omniauth-steam', '~> 1.0.3'
+gem 'omniauth-steam', '~> 1.0.6'
 
 # -- Environment
 gem 'dotenv-rails', '~> 2.4.0'

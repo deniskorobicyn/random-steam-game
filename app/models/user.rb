@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable
 
   devise :omniauthable, omniauth_providers: [:steam]
 
@@ -15,17 +15,17 @@ class User < ApplicationRecord
     user.nickname = auth.info.nickname
     user.email = 'no-email@steam.provider'
     user.password = Devise.friendly_token[0,20]
-    user.steamid = auth.extra.raw_info.steamid
+    user.steamid = auth.uid
 
     user.save!
     user
   end
 
   def email_required?
-      false
+    false
   end
 
   def email_changed?
-      false
+    false
   end
 end
