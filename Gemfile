@@ -11,7 +11,6 @@ gem 'devise', '~> 4.7.1'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'omniauth-steam', '~> 1.0.6'
 
-
 # -- Environment
 gem 'dotenv-rails', '~> 2.4.0'
 
