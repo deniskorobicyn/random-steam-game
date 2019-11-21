@@ -18,7 +18,12 @@ tmp/
 # Ignore Mac OS X file
 .DS_Store
 
+# Ignore coverage
 coverage/
 
+# Ignore config
 config/application.yml
 .env
+
+# Ignore pry stuff
+.pry_history
