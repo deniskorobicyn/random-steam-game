@@ -5,7 +5,7 @@ env:
 - RAILS_ENV=test
 
 rvm:
-  - 2.4
+  - 2.6
 
 services:
   - postgresql
