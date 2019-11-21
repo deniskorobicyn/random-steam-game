@@ -14,10 +14,6 @@ gem 'omniauth-steam', '~> 1.0.6'
 # -- Environment
 gem 'dotenv-rails', '~> 2.4.0'
 
-# -- Security
-gem 'bundle-audit'
-gem 'brakeman'
-
 # -- Database
 gem 'kaminari', '~> 1.1.1'
 gem 'pg', '~> 1.1'

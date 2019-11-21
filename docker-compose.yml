@@ -6,7 +6,7 @@ services:
     ports:
       - '3000:3000'
     environment:
-      - BUNDLE_PATH=/bundle/2.4/
+      - BUNDLE_PATH=/bundle/2.6/
       - RSG_REDIS_HOST=redis
       - RSG_REDIS_PORT=6379
     volumes:
@@ -31,7 +31,7 @@ services:
     build: .
     command: bundle exec sidekiq
     environment:
-      - BUNDLE_PATH=/bundle/2.4/
+      - BUNDLE_PATH=/bundle/2.6/
       - RSG_REDIS_HOST=redis
       - RSG_REDIS_PORT=6379
     volumes:
