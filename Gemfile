@@ -19,7 +19,7 @@ gem 'brakeman'
 
 # -- Database
 gem 'kaminari', '~> 1.1.1'
-gem 'pg', '~> 0.19'
+gem 'pg', '~> 1.1'
 gem 'redis', '~> 3.3'
 
 # -- Frontend
