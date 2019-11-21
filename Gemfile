@@ -20,7 +20,7 @@ gem 'brakeman'
 # -- Database
 gem 'kaminari', '~> 1.0.1'
 gem 'pg', '~> 0.19'
-gem 'redis', '~> 3.2'
+gem 'redis', '~> 3.3'
 
 # -- Frontend
 gem 'bootstrap-sass' , '~> 3.4.0'
