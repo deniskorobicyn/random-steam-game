@@ -27,7 +27,7 @@ gem 'slim-rails', '~> 3.1.1'
 gem 'uglifier', '~> 4.2.0'
 
 # -- Buisness Logic
-gem "interactor-rails", "~> 2.2.0"
+gem "interactor-rails", "~> 2.2.1"
 gem 'steam-api', '~> 1.1.0'
 
 # -- background
