@@ -51,6 +51,6 @@ end
 
 group :development do
   gem 'pry-rails'
-  gem 'web-console', '~> 3.4'
+  gem 'web-console', '~> 3.7'
   gem 'awesome_print'
 end
