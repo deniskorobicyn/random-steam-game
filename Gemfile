@@ -43,7 +43,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '~> 3.5.2'
+  gem 'rspec-rails', '~> 3.9.0'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
   gem 'simplecov'
