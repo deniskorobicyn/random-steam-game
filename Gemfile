@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # -- Framework
-gem 'rails', '5.2.2.1'
+gem 'rails', '5.2.4'
 
 # -- Serialization
 gem 'active_model_serializers', '~> 0.10.7'
