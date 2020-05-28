@@ -15,7 +15,7 @@ gem 'omniauth-steam', '~> 1.0.6'
 gem 'dotenv-rails', '~> 2.4.0'
 
 # -- Database
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'pg', '~> 1.1'
 gem 'redis', '~> 3.3'
 
